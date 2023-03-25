@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block title %}
+my profile
+{% endblock %}
+{% block content %}
+{% load static %}
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+    $("#btne").click(function(){
+    $(".uform").slideToggle("4000")
+    })
+    })
+</script>
+{% if not request.session.userid %}
+
+<script>
+    alert('You have login first...')
+    location.href="/user/signin/"
+</script>
+{% endif %}
+<style>
+    .h{
+    max-height:600px;
+    width=600px;
+    margin:0px auto;
+    border:2px solid black;
+    border-radius:8px;
+    }
+    #pic{
+    height:260px;
+    width:230px;
+    border:2px solid black;
+    border-radius:4px;
+    margin:20px 35px;
+
+    }
+
+</style>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 h">
+                 <!--start card-->
+        {% for x in mdata %}
+<div class="row  p-0 m-0">
+    <h2 class="text-center"> Your <b class="text-ocolor"> Profile</b></h2>
+<div class="col-sm-7 mt-3">
+    <b class="fw-bold  fs-3">Name : </b> <i class="fs-4">{{x.name}}</i><br>
+    <b class="fw-bold  pt-4 fs-3">Email : </b> <i class="fs-4">{{x.email}}</i><br>
+    <b class="fw-bold  pt-4 fs-3">Password : </b> <i class="fs-4">{{x.passwd}}</i><br>
+    <b class="fw-bold  fs-3">Mobile : </b> <i class="fs-4">{{x.mobile}}</i><br>
+    <b class="fw-bold pt-4 mb-4 fs-3"> Address : </b> <i class="fs-4">{{x.address}}</i><br>
+    <a href="#" id="btne" class="btn bg-bcolor z m-3 text-ocolor">Edit Profile</a>
+</div>
+<div class="col-sm-5">
+
+    <img src="/{{x.ppic}}" id="pic"/>
+</div>
+</div>
+        </div>
+        {% endfor %}
+        <!--end card-->
+    <div class="col-sm-2"></div>
+</div>
+<!--form-->
+<style>
+.h{
+min-height:400px;
+width:800px;
+border:2px solid blue;
+border-radius:10px;
+margin:0px auto;
+}
+.uform{
+display:none;
+}
+</style>
+    <div class="row h bg-light uform">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+            <div class="row">
+                    <div class="mb-3">
+  <i class="fa-solid fa-user"></i> <label  class="form-label" >Name</label>
+  <input type="text" class="form-control" placeholder="Enter Your name"  aria-describedby="" name="name">
+</div>
+                    <div class="mb-3">
+  <i class="fa-solid fa-phone"></i> <label  class="form-label" >Mobile No.</label>
+  <input type="tel" class="form-control" placeholder="Enter mobile number" aria-describedby="" name="mob">
+</div>
+                    <div class="mb-3">
+  <i class="fa-solid fa-address-card"></i> <label  class="form-label" >Address </label>
+      <textarea class="form-control" placeholder="Enter full address" name="address"></textarea>
+</div>
+                    <div class="mb-3">
+  <i class="fa-solid fa-user"></i> <label  class="form-label" >Email </label>
+  <input disabled type="email" class="form-control" placeholder=" "  aria-describedby="" name="email">
+</div>
+                    <div class="mb-3">
+    <i class="fa-solid fa-key"></i>  <label  class="form-label"> New Password </label>
+  <input type="password" class="form-control" placeholder="Enter new password" name="passwd">
+</div>
+                    <div class="mb-3">
+    <label class="form-controls">Upload Images </label>
+  <input type="file" class="form-controls"  name="pic">
+</div>
+                    <div class="mb-3">
+<button type="submit" class="btn bg-bcolor" > Update </button>
+<button type="reset" class="btn btn-danger"> Cancel </button>
+          </div>
+
+            </div>
+            </form>
+        </div>
+        <div class="col-sm-2"></div>
+  </div>
+
+<!--end form-->
+{% endblock %}

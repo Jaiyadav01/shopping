@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+sign in
+{% endblock %}
+{% block content %}
+<style>
+.outer{
+min-height:300px;
+width:100%;
+}
+.login{
+min-height:270px;
+background:#ffffff;
+text-align:center;
+}
+.clr{
+background:#f0f2f5;
+}
+.txt{
+margin-top:20px;
+height:40px;
+
+}
+.bt{
+background:#46b829;
+padding:10px;
+}
+</style>
+<div class="container outer ">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container outer border border-2 rounded-2 mt-3 clr">
+<div class="row">
+<div class="col-sm-7 text-center fs-1 pt-5">FavCart <b class="text-ocolor fw-bold ">India
+            <i class="fa-solid fa-cart-arrow-down text-center text-ocolor"></i></b><br> <p class="fs-5 text-dark">connect with online Shopping and the world around you on <br/> FavCart India</p> </div>
+<div class="col-sm-5 mt-4 border border-2 rounded-3 login">
+<form class="text-center">
+      <div class="col-sm text-center pt-3 fs-3 "> Welcome to <b class="text-ocolor">FavCart India</b> </div>
+    <p class="text-center fs-6 pt-2">LogIn to Your Online Shopping</p>
+<input type="text" placeholder =" Enter your email" class="txt me-2 rounded-2 bg-light form-control" name="email" required>
+<input type="password" placeholder ="password" class="txt me-2 mb-3 rounded-2 bg-light form-control" name="passwd" required><br>
+<input type="submit" value="Sign In" class="btn bg-bcolor border mb-2 fw-bold border-2 z form-control rounded-2" style="padding-left:120px; padding-right:120px;"><br>
+    <p>or <a class="text-ocolor" href="#">Forgot password</a></p><hr/>
+    <p>Don't have an account?<a class="text-ocolor p-3" href="#">Sign Up</a></p>
+</form>
+</div>
+</div>
+</div>
+</form>
+</div>
+{% endblock %}

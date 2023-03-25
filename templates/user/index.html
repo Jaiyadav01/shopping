@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="row slider">
+        <!--start slider-->
+        <div class="col-sm-12 p-0">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="3000">
+      <img src="{% static 'images/sl1.jpg' %}" class="d-block w-100" style="height:450px;" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 CLASS="text-ocolor fs-1"><b style="font-weight:20px; padding-right:250px;"></b></h5>
+        <p class="text-ocolor mb-5 fs-1"><b style="font-weight:15px; margin-right:300px;"> W O M E N ' S </b></p>
+        <p class="text-primary fs-2 pe-3"><b style="font-weight:15px; ">70% OFF/-</b></p>
+                      <input type="button" value="SHOP NOW" class=" btn fs-2 fw-bold bg-bcolor  z pe-4 ps-4  pt-2 pb-2" style="margin-right:300px;">
+      </div>
+    </div>
+    <div class="carousel-item active" data-bs-interval="3000">
+      <img src="{% static 'images/sl3.jpg' %}" class="d-block w-100" style="height:450px;" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 CLASS="text-light mb-5 fs-1"><b style="font-weight:20px; margin-right:300px;">K I D S W E A R</b></h5>
+        <p class="text-primary fs-4 pe-5"><b style="font-weight:15px; ">MRP 499 /-</b> onwards</p>
+            <input type="button" value="SHOP NOW" class="z btn fs-2 fw-bold bg-bcolor  ps-4 pe-4 pt-2 pb-2" style="margin-right:300px;">
+      </div>
+    </div>
+    <div class="carousel-item active" data-bs-interval="3000">
+      <img src="{% static 'images/sl2.jpg' %}" class="d-block w-100" style="height:450px;" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+      <h5 CLASS="text-light fs-1"><b style="font-weight:20px; padding-right:200px;">M E N ' S</b></h5>
+        <p class="text-ocolor fs-4"><b style="font-weight:15px; margin-right:300px;">MRP 2999+</b></p>
+        <p class="text-primary fs-2"><b style="font-weight:15px;">Hurry Up!</b></p>
+                      <input type="button" value="SHOP NOW" class=" fw-bold bg-bcolor z btn fs-2 ps-4 pe-4 pt-2 pb-2" style="margin-right:300px;">
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+        </div>
+        <!--end slider-->
+    </div>
+<!-- start category-->
+                            <div class="row"> <h3 class="text-center fs-2">Our <b class="text-ocolor"> Product </b></h3></div>
+
+    <div class="row category px-5 py-3">
+
+        <div class="col-sm-4 w">
+            <center>
+<a href="/user/womens/" class="btn btn-lg bg-bcolor text-ocolor z">Women's</a>
+            </center>
+        </div>
+        <div class="col-sm-4 m">
+            <center>
+<a href="/user/mens/" class="btn btn-lg bg-bcolor text-ocolor z">Men's</a>
+            </center>
+        </div>
+        <div class="col-sm-4 k" >
+            <center>
+<a href="/user/kids/" class="btn btn-lg bg-bcolor text-ocolor z">Kid's</a>
+            </center>
+        </div>
+    </div>
+<!-- end category-->
+        <!--start card-->
+<div class="row bg--light py-3">
+    {% if data %}
+    {% for x in data %}
+    <div class="col-sm-2">
+        <div class="card w-100">
+  <img src="/{{x.CPic}}" class="card-img-top" alt="...">
+  <div class="card-body">
+      <a href="/user/cpdetail?cid={{x.id}}">
+    <h5 class="card-title text-center">{{x.Name}}</h5>
+      </a>
+  </div>
+</div>
+    </div>
+    {% endfor %}
+    {% endif %}
+ <!--end card-->
+</div>
+
+<!-- start Arrival -->
+<div class="row p-3">
+    <div class="col-sm-3" style="min-height:250px;">
+        <div class="text-center fs-3 py-5">New <b class="text-ocolor">Arrival
+        <i class="fa-solid fa-shirt"></i>
+        </b></div>
+        <p> FavCart India Hot New Releases
+Our best-selling new and future releases. Updated hourly. Men's jeans, Men's Shirt, Men's T-Shirt, Men's Kurta,Women;s Kurti, Shirt,T-Shirt,Jeans,Kid's cloths,Kurta,Jeans,Shirt,T-Shirt etc.</p>
+        <center>
+                <a href="#" class="btn bg-bcolor text-ocolor me-4 z"> New Arrival</a>
+        </center>
+    </div>
+
+    <!-- end Arrival -->
+
+       <!-- start product -->
+    {% for a in prodata %}
+    <div class="col-sm-3 my-2">
+        <div class="card bg-light">
+            <img src="/{{a.ppic}}" style="max-height:300px;" class="img-card-top"/>
+            <div class="card-body ">
+                <h5 class="card-title">{{a.pcategory}}</h5>
+                <hr class="divider"/>
+                <b class="btn btn-sm bg-bcolor"><i class="fa-solid fa-indian-rupee-sign text-ocolor"></i></b>
+                <b class="text-success fs-4">{{a.dprice}} /-</b>
+                <b class="text-danger fs-4"><s><sub><i class="fa-solid fa-indian-rupee-sign text-ocolor"></i>{{a.pprice}} /-</sub></s></b><br/><br/>
+                <b class="btn btn-sm" >{{a.psize}}</b>
+                <div style="height:20px;width:20px; background:{{a.pcolor}}; border-radius:1px;" class="float-end "></div>
+                <hr class="divider"/>
+                <span class="text-muted fs-6">{{a.pdel}}</span><br/>
+                <a href="/user/viewproduct?msg={{a.id}}" class="btn btn-sm bg-bcolor text-ocolor z">Order Now</a>
+                <a href="/user/mcart?pid={{a.id}}" class="btn btn-sm bg-bcolor text-ocolor z">Cart<i class="fa-solid fa-cart-shopping "></i></a><br/>
+                <span class="text-muted fs-6"><b>Date:</b>{{a.pdate}}</span><br/>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+       <!-- end product -->
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}
+sign up
+{% endblock %}
+{% block content %}
+<style>
+.h{
+min-height:400px;
+width:800px;
+border:2px solid blue;
+border-radius:10px;
+margin:0px auto;
+}
+</style>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<div class="row h bg-light">
+  <div class="col-sm text-center fs-3 pb-3 "> Sign <b class="text-ocolor">Up</b> </div>
+    <div class="row">
+        <div class="col-sm-6">
+  <div class="mb-3">
+  <i class="fa-solid fa-user"></i> <label for=" " class="form-label" >Name</label>
+  <input type="text" class="form-control" placeholder="Enter Your name"  aria-describedby="" name="name">
+</div>
+  <div class="mb-3">
+  <i class="fa-solid fa-phone"></i> <label  class="form-label" >Mobile No.</label>
+  <input type="tel" class="form-control" placeholder="Enter mobile number" aria-describedby="" name="mob">
+</div>
+  <div class="mb-3">
+  <i class="fa-solid fa-address-card"></i> <label  class="form-label" >Address </label>
+      <textarea class="form-control" placeholder="Enter full address" name="address"></textarea>
+</div>
+        </div>
+        <div class="col-sm-6">
+        <div class="mb-3">
+  <i class="fa-solid fa-envelope"></i> <label  class="form-label" >Email address </label>
+  <input type="email" class="form-control" placeholder="Enter your email"  aria-describedby="emailHelp" name="email">
+</div>
+        <div class="mb-3">
+    <i class="fa-solid fa-key"></i>  <label for="exampleInputPassword1" class="form-label">Password </label>
+  <input type="password" class="form-control" placeholder="Enter new password" name="passwd">
+</div>
+        <div class="mb-3">
+    <label class="form-controls" for=" ">Upload Images </label>
+  <input type="file" class="form-controls"  name="pic">
+</div>
+        </div>
+        <div class="mb-3">
+<button type="submit" class="btn bg-bcolor"> Sign Up </button>
+<button type="reset" class="btn btn-danger"> Cancel </button>
+          </div>
+    </div>
+  </div>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'images/icon.jpg' %}" rel="icon">
+    <title>
+        {% block title  %}
+        {% endblock %}
+    </title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/all.css' %}" rel="stylesheet"/>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <style >
+        .bg-bcolor
+        {
+        background:#a5aa56;
+        }
+        .bg-dcolor{
+        background:#e6cca7;
+        }
+        .text-ocolor{
+        color:purple;
+        }
+
+        .ufooter{
+        min-height:100px;
+        border-bottom:1px solid white;
+        }
+        .bfooter{
+        min-height:50px;
+        font-size:20px;
+        text-align:center;
+        color:white;
+
+        }
+        .bfooter a{
+        text-decoration:none;
+        }
+        .bfooter a:hover{
+        color:white;
+        }
+        .w{
+        background:url("{% static 'images/women.jpeg' %}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:140px;
+
+        }
+        .m{
+        background:url("{% static 'images/pm.jpeg' %}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:140px;
+        }
+        .k{
+        background:url("{% static 'images/kid.jpg' %}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:140px;
+        }
+        .btn1{
+        background:purple;
+        }
+        .product{
+        min-height:500px;
+        }
+        .menu ul li a:hover{
+        background:white;
+        border-radius:9px;
+        box-shadow:0px 0px 12px 1px purple inset;
+        transition:all ease 3;
+        display:block;
+        text-color:black;
+        }
+        .z:hover{
+        box-shadow:0px 0px 12px 1px purple inset;
+        transition:all ease 3;
+        border-radius:9px;
+        text-color:#fd7e21;
+        }
+
+
+    </style>
+
+</head>
+<body style="background:#f8f9fa;">
+<div class="container-fluid p-0 m-0">
+    <!-- start top-->
+    <div class="row bg-bcolor text-light text-center p-0 m-0">
+        <div class="col-sm-4">
+            <a href="#" class="text-ocolor"> <i class="fa-solid fa-phone fa-spin z"></i></a> +91 9453320757 ||
+           <a href="https://chat.whatsapp.com/GLnfJGPKimT5GIP5DZHqnJ" class="text-light "> <i class="fa-brands fa-whatsapp fa-bounce bg-success z"></i></a> +91 9532043006
+        </div>
+        <div class="col-sm-4">
+            Welcome To Fav Cart India
+            <a href="#"><i class="fa-solid fa-cart-arrow-down text-ocolor z"></i></a>
+        </div>
+        <div class="col-sm-4">
+            <a href="https://www.facebook.com/" class="text-light"><i class="fa-brands fa-facebook pe-2 z"></i></a>
+          <a href="https://www.youtube.com/" class="text-danger"> <i class="fa-brands fa-youtube pe-2 z"></i></a>
+           <a href="https://www.twitter.com/" class="text-light"> <i class="fa-brands fa-twitter pe-2 z"></i></a>
+           <a href="https://www.instagram.com/" class="text-ocolor"> <i class="fa-brands fa-instagram z"></i></a>
+        </div>
+    </div>
+     <!-- end top-->
+     <!-- start header-->
+    <div class="row header py-3 text-center p-0 m-0">
+        <div class="col-sm-4 fs-2 text-center">
+            FavCart <b class="text-ocolor">India
+            <a href="#"><i class="fa-solid fa-cart-arrow-down text-ocolor"></i></a> </b>
+        </div>
+        <div class="col-sm-4 pt-2">
+            <div class="input-group">
+                <input type="text" class="form-control z" placeholder="Search">
+                <i class="input-group-text bg-bcolor text-light ">
+                    <i class="fa-solid fa-magnifying-glass z"></i></i>
+            </div>
+        </div>
+        <div class="col-sm-4 ">
+            <a href="/user/showcart/" class="btn bg-bcolor border border-2 text-ocolor z">
+                <b class="fs-5 text-ocolor  "> Cart<i class="fa-solid fa-cart-arrow-down"></i></b>
+                <b class="badge bg-dark">
+                    {{cart}}
+                </b>
+            </a>
+            {% if request.session.userid %}
+            <b>{{request.session.userid}}</b>
+            <img src="/{{request.session.userpic}}" style="max-height:50px;border:1px; border-radius:180px;" class="img-thumbnail"/>
+            {% else %}
+            <b>Guest User</b>
+            <img src="{% static 'profile/defaultpic.jpeg' %}" style="max-height:50px;border:1px; border-radius:180px;" class="img-thumbnail"/>
+
+            {% endif %}
+        </div>
+
+        </div>
+    </div>
+    <div class="row menu bg-bcolor p-0 m-0 pt-1" style="min-height:45px">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+             <!-- end header-->
+
+            <!-- start menu -->
+     <nav class="navbar navbar-expand-lg p-0 m-0" id="menu">
+  <div class="container-fluid text-center p-0 m-0">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/user/index/"> Home <i class="fa-solid fa-house-user"></i> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/user/about/"> About Us <i class="fa-solid fa-address-card"></i> </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Product <i class="fa-brands fa-product-hunt"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item bg-bcolor border text-dark" href="/user/mens/">Men's</a></li>
+            <li><a class="dropdown-item bg-bcolor border text-dark" href="/user/womens/">Women's</a></li>
+            <li><a class="dropdown-item bg-bcolor border text-dark" href="/user/kids/">Kid's</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/user/myorder/"> My Order's <i class="fa-solid fa-cart-arrow-down"></i> </a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link text-dark" href="/user/enquiry/">Enquiry <i class="fa-solid fa-envelope"></i> </a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link text-dark" href="/user/myprofile/">My Profile <i class="fa-solid fa-user"></i> </a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link text-dark" href="/user/signup/">Sign UP<i class="fa-solid fa-caret-down"></i></a>
+        </li>
+          {% if request.session.userid %}
+          <li class="nav-item">
+          <a class="nav-link text-dark" href="/user/signout/"> Sign out<i class="fa-solid fa-caret-down"></i></a>
+        </li>
+          {% else %}
+
+          <li class="nav-item">
+          <a class="nav-link text-dark" href="/user/signin/"> Sign In<i class="fa-solid fa-caret-down"></i></a>
+        </li>
+          {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+ <!-- end menu -->
+
+    <div class="row product p-0 m-0">
+        <div class="col-sm-12 py-3">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+    <div class="row bigsale p-0 m-0" style="min-height:300px; padding:0px auto;">
+        <div class="row"> <h3 class="text-center fs-2 p-4">Big <b class="text-ocolor"> Sale <i class="fa-sharp fa-solid fa-wand-magic-sparkles"></i></b></h3></div>
+        <div class="col-sm-6">
+            <img src="{% static 'images/bigsale.jpg' %}" height="460px;"/>
+        </div>
+        <div class="col-sm-6 bg-light text-center pt-3">
+            <p class="fs-3">FavCart <b class="text-ocolor ">India
+                <i class="fa-solid fa-cart-arrow-down"></i></b></p>
+              <b class="fs-2 text-primary">SABSE SASTE DIN</b><br>
+            <b class="fs-3 text-dark">2022</b><br>
+            <b CLASS="fs-1 border border-2 p-2">OFFER 50% OFF/-</b><br>
+            <input type="button" value="SHOP NOW" class=" z btn  rounded-2 color-ocolor bg-bcolor ps-4 pe-4 pt-2 pb-2"/>
+        </div>
+    </div>
+    <div class="row message p-0 m-0">
+        <div class="row fs-2 p-0 m-0 pt-3 "><p class="text-center border">Our <b class="text-ocolor">Services</b></p></div>
+        <div class="col-sm-3 text-center">
+            <a href="#"><i class="fa-solid fa-lock fs-2 text-ocolor"></i></a><br>Secure Payment <p style="font-size:14px;">100% secure payment</p>
+        </div>
+        <div class="col-sm-3 text-center">
+            <a href="#"><i class="fa-solid fa-clock fs-2 text-ocolor"></i></a><br> Delivery On Time <p style="font-size:14px;">fast delivery at doorstep</p>
+        </div>
+        <div class="col-sm-3 text-center">
+            <a href="#"><i class="fa-solid fa-truck-fast fs-2 text-ocolor"></i></a><br> FREE Shipping <p style="font-size:14px;">for all order up to Rs.5000/-</p>
+        </div>
+         <div class="col-sm-3 text-center">
+             <a href="#"><i class="fa-solid fa-box fs-2 text-ocolor"></i></a><br> Returns and Refunds<p style="font-size:14px;">Return or exchange items Print return mailing labels</p>
+        </div>
+    </div>
+    <div class="row ufooter bg-dcolor p-0 m-0">
+        <div class="col-sm-3 ps-3">
+            <p class="fs-3">FavCart <b class="text-ocolor ">India
+                <i class="fa-solid fa-cart-arrow-down"></i></b></p>
+            <p style="font-size:15px;">Address: Civil line,<br>Prayagraj,Uttar Pradesh
+            Mobile: 9532043006</p>
+            <p style="font-size:15px;" class="text-dark">Email:<a href="https://www.gmail.com" class="text-dark"> jaisinghyadav101638@gmail.com</a></p>
+        </div>
+        <div class="col-sm-3 text-center  pt-4">
+          <a href="#"><img src="{% static 'images/googleplay.jpg' %}" height="70px" /></a>
+        </div>
+        <div class="col-sm-3 ">
+            <p class="fs-3"> My Account</p>
+            <a style="font-size:15px;" href="#">Contact</a><br>
+            <a style="font-size:15px;" href="#">Shopping Cart</a>
+        </div>
+        <div class="col-sm-3 pt-3 text-center">
+            <p style="font-size:15px;">Subscribe it for latest product with offer</p>
+             <div class="input-group">
+                <input type="text" class="form-control z" placeholder="Enter your E-mail">
+                <i class="input-group-text bg-bcolor text-light btn border z">SUBSCRIBE</i>
+
+            </div>
+            <br/>
+            <a href="https://www.facebook.com/" class="text-light"><i class="fa-brands fa-facebook z pe-2"></i></a>
+            <a href="https://www.youtube.com/" class="text-danger"> <i class="fa-brands fa-youtube z pe-2"></i></a>
+            <a href="https://www.twitter.com/" class="text-light"> <i class="fa-brands fa-twitter z pe-2"></i></a>
+            <a href="https://www.instagram.com/" class="text-ocolor"> <i class="fa-brands fa-instagram z"></i></a>
+        </div>
+    </div>
+    <div class="row bfooter bg-bcolor pt-3 p-0 m-0" style="font-size:14px;">
+        <div class="col-sm-6" >
+            &copy; 2022 FavCart <b class="text-ocolor">India</b> 2022 | Developed By:<b class="text-ocolor"> Jai Singh Yadav</b>
+        </div>
+        <div class="col-sm-6 ">
+            Privacy and Policy
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+{% extends 'base.html'%}
+{% block title %}
+enquiry
+{% endblock %}
+{% block content %}
+<style>
+    .txt
+    {
+    height:50px;
+    }
+    .txti
+    {
+    width:50px;
+    height:50px;
+    }
+    .txta
+    {
+    height:80px;
+    }
+</style>
+<div class="fs-2 text-center">Customer <b class="text-ocolor">Enquiry
+<i class="fa-solid fa-pen"></i>
+</b></div>
+<div class="row pt-2">
+    <div class="col-sm-6">
+        <div class="text-center fs-3 pb-2"> Customer <b class="text-ocolor">Query</b></div>
+        {% if m %}
+        <div class="alert alert-success">YOUR MESSAGE SENT SUCCESSFULLY</div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <i class="input-group-text bg-bcolor text-white txti ps-3">
+                <i class="fa-solid fa-user"></i>
+                </i>
+        <input type="text" name="name" class="form-control txt"
+               placeholder="Name..">
+            </div>
+               <div class="input-group mb-3">
+                <i class="input-group-text bg-bcolor text-white txti ps-3">
+               <i class="fa-solid fa-envelope"></i>
+                </i>
+        <input type="email" name="email" class="form-control txt"
+               placeholder="Email.." required>
+            </div>
+               <div class="input-group mb-3">
+                <i class="input-group-text bg-bcolor text-white txti ps-3">
+               <i class="fa-solid fa-phone"></i>
+                </i>
+        <input type="text" name="mobile" class="form-control txt"
+               placeholder="Mobile..">
+            </div>
+               <div class="input-group mb-3">
+                <i class="input-group-text bg-bcolor text-white txti ps-3 txta">
+                <i class="fa-solid fa-message"></i>
+                </i>
+        <textarea class="form-control txta" name="message"
+                  placeholder="Message.."></textarea>
+            </div>
+            <input type="submit" value="Send Now" class="btn bg-bcolor txt text-ocolor ">
+            <input type="reset" value="Cancel" class="btn bg-danger txt text-ocolor">
+
+        </form>
+    </div>
+        <div class="col-sm-6">
+            <div class="fs-2 text-center">Contact <b class="text-ocolor">Us
+<i class="fa-solid fa-location-dot"></i>
+</b></div>
+            <div class="card " style="max-width: 35rem;">
+  <div class="card-header bg-transparent ">Contact</div>
+  <div class="card-body text-success">
+      <p class="card-text"><b>Address:</b> 23/423 Bus stand <br/>Civil line Prayagraj <br/>Uttar pradesh India <br/>Pincode:211013</p>
+
+      <h5 class="card-title"><b>Phone No. </b>9532043006</h5>
+  </div>
+                <div class="card-footer bg-transparent "><b>Email:</b> jaisinghyadav101638@gmail.com</div>
+</div>
+        </div>
+</div>
+{% endblock %}

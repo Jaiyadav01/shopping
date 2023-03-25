@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if not request.session.userid %}
+<script>
+    alert('You have SignIn first...');location.href="/user/signin/"
+</script>
+{% endif %}
+<div class="text-center mb-4 border fs-3 p-0 m-0">Your Item in<b style="font-weight:20px;" class="text-ocolor" > Cart</b></div>
+<table class="table table-striped">
+    <tr>
+    <th>Product Picture</th>
+    <th>Price</th>
+    <th>After Discount</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Product Delivery</th>
+    <th>Added Date</th>
+        <th>Delete</th>
+    <th>Order</th>
+    </tr>
+       {% for i in cdata %}
+    <tr>
+
+        <td><img src="/{{i.6}}" style="max-height:150px;" class="img-thumbnail"></td>
+        <td class="text-danger fw-bold">{{i.10}}</td>
+        <td class="text-success fw-bold">{{i.1}}</td>
+        <td><span class="btn bg-bcolor">{{i.2}}</span></td>
+        <td><div style="height:45px; width:45px;border-radius:3px;background:{{i.3}}"></div></td>
+        <td>{{i.5}}</td>
+        <td>{{i.15}}</td>
+        <td><a href="/user/showcart?msg={{i.11}}" class="btn btn-sm btn-danger" >Cancel <i class="fa-solid fa-trash"></i></a></td>
+        <td><a href="/user/showcart?cid={{i.11}}&pid={{i.13}}" class="btn bg-bcolor"> Order Now </a></td>
+    </tr>
+        {% endfor %}
+</table>
+
+{% endblock %}
